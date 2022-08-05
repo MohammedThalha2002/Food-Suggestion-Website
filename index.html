@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/food.svg">
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Recipie Website</title>
+</head>
+
+<body>
+    <section class="top-section">
+        <div class="titles">
+            <header>Find Meals For Your Ingredients</header>
+            <h3>Real food doesn't have ingredients, real food is ingredients <br>-jamei Oliver</h3>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Enter an ingredient" id="input-ingredient">
+            <button id="search-btn">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div class="below-text">
+            <h2>Your Search Results:</h2>
+        </div>
+    </section>
+    <section class="results">
+        <div class="result-container">
+            <img src="./assets/food.jpg" alt="">
+            <h2>Potato Chips</h2>
+            <button class="get-reciepe-btn">Get Reciepe</button>
+        </div>
+    </section>
+    <section class="popup-model">
+        <div class="popup">
+            <div id="close-btn">
+                <button id="close">
+                    <i class="fa fa-close"></i>
+                </button>
+            </div>
+            <div class="popup-content">
+                <h1 id="meal-name">MEAL NAME</h1>
+                <div class="category-name">
+                    <h2 id="category-name">Category</h2>
+                </div>
+                <h2 id="instruction">Instructions</h2>
+                <p id="ins-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem sunt itaque corporis quasi molestias
+                    eveniet quisquam beatae, non ut et ex accusantium eaque iure facere rem mollitia assumenda natus.
+                    Voluptatem iusto consequuntur similique? Eum rerum aliquam facilis adipisci doloremque architecto
+                    ducimus similique, at beatae atque possimus quaerat fugit amet minus?</p>
+                <img src="./assets/food.jpg" alt="" class="circle-img">
+                <br>
+                <a href="#" id="watch-video">Watch Video</a>
+            </div>
+        </div>
+    </section>
+    <script src="./script.js"></script>
+</body>
+
+</html>
