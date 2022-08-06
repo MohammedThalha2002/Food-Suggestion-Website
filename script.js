@@ -87,4 +87,5 @@ const getDescriptionAndShowPopup = (id) => {
 
 const noResultsFoundScreen = () => {
     results.innerHTML = `<h2>NO Results Found<h2/>`
+    loading.style.display = 'none'
 }
