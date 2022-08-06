@@ -3,6 +3,7 @@ const popupCloseBtn = document.getElementById('close-btn')
 const searchBtn = document.getElementById('search-btn')
 const input = document.getElementById('input-ingredient')
 const results = document.querySelector('.results')
+const loading = document.getElementById('loading')
 
 popupCloseBtn.addEventListener('click', (event) => {
     popupModel.style.display = 'none'
@@ -10,6 +11,8 @@ popupCloseBtn.addEventListener('click', (event) => {
 })
 
 searchBtn.addEventListener('click', (event) => {
+    results.innerHTML = ``
+    loading.style.display = 'flex'
     console.log("search btn clicked")
     console.log(input.value);
     let inputIngredient = input.value
@@ -23,6 +26,7 @@ const getReciepeList = (search) => {
         .then(data => {
             let mealsData = data.meals
             console.log(mealsData.length)
+            loading.style.display = 'none'
             addReciepeToScreen(mealsData)
         })
         .catch(error => {
