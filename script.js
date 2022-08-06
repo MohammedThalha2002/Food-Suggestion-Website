@@ -25,9 +25,6 @@ const getReciepeList = (search) => {
             console.log(mealsData.length)
             addReciepeToScreen(mealsData)
         })
-        .then(res => {
-
-        })
         .catch(error => {
             console.log(error)
             noResultsFoundScreen()
@@ -48,24 +45,40 @@ const addReciepeToScreen = (mealsData) => {
     const getReciepebtn = document.querySelectorAll('.get-reciepe-btn')
     getReciepebtn.forEach((item, index) => {
         item.addEventListener('click', (event) => {
+            getDescriptionAndShowPopup(mealsData[index].idMeal)
+
+        })
+    })
+}
+
+const getDescriptionAndShowPopup = (id) => {
+    let mealsDescription;
+    fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
+        .then(res => res.json())
+        .then(data => {
+            mealsDescription = data.meals
+            console.log(mealsDescription)
             popupModel.style.display = 'flex'
             console.log("clicked reciepe btn")
             const popupContent = document.querySelector('.popup-content')
-            let popuHTML = `<h1 id="meal-name">${mealsData[0].strMeal}</h1>
+            let popuHTML =
+                `<h1 id="meal-name">${mealsDescription[0].strMeal}</h1>
             <div class="category-name">
-                <h2 id="category-name">${input.value}</h2>
+                <h2 id="category-name">${mealsDescription[0].strCategory}</h2>
             </div>
             <h2 id="instruction">Instructions</h2>
-            <p id="ins-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem sunt itaque corporis quasi molestias
-                eveniet quisquam beatae, non ut et ex accusantium eaque iure facere rem mollitia assumenda natus.
-                Voluptatem iusto consequuntur similique? Eum rerum aliquam facilis adipisci doloremque architecto
-                ducimus similique, at beatae atque possimus quaerat fugit amet minus?</p>
-            <img src="./assets/food.jpg" alt="" class="circle-img">
+            <p id="ins-content">${mealsDescription[0].strInstructions}</p>
+            <img src="${mealsDescription[0].strMealThumb}" alt="" class="circle-img">
             <br>
-            <a href="#" id="watch-video">Watch Video</a>`
+            <a href="${mealsDescription[0].strYoutube}" id="watch-video" target="_blank">Watch Video</a>`
+
             popupContent.innerHTML = popuHTML
         })
-    })
+        .catch(error => {
+            console.log(error)
+            noResultsFoundScreen()
+        })
+    return mealsDescription
 }
 
 const noResultsFoundScreen = () => {
