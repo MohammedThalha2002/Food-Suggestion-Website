@@ -78,7 +78,7 @@ i {
 
 .result-container {
     max-width: 250px;
-    max-height: 280px;
+    max-height: 400px;
     margin: 2rem;
     text-align: center;
     background-color: white;
@@ -94,7 +94,7 @@ i {
 
 .result-container h2 {
     font-size: 2rem;
-    margin: 1rem;
+    margin: 0.2rem;
 }
 
 .get-reciepe-btn {
@@ -103,7 +103,7 @@ i {
     color: white;
     padding: 1rem;
     border-radius: 2rem;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 .get-reciepe-btn:hover {
