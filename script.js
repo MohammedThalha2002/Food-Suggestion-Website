@@ -1,4 +1,3 @@
-const getReciepebtn = document.querySelector('.get-reciepe-btn')
 const popupModel = document.querySelector('.popup-model')
 const popupCloseBtn = document.getElementById('close-btn')
 const searchBtn = document.getElementById('search-btn')
@@ -25,14 +24,18 @@ const getReciepeList = (search) => {
             let mealsData = data.meals
             console.log(mealsData.length)
             addReciepeToScreen(mealsData)
-        }).catch(error => {
+        })
+        .then(res => {
+
+        })
+        .catch(error => {
             console.log(error)
             noResultsFoundScreen()
         })
 }
 
 const addReciepeToScreen = (mealsData) => {
-    let generatedHtml = ''
+    let generatedHtml = ``
     mealsData.forEach((meal, index) => {
         generatedHtml +=
             `<div class="result-container">
@@ -42,10 +45,27 @@ const addReciepeToScreen = (mealsData) => {
         </div>`
     })
     results.innerHTML = generatedHtml
-    // getReciepebtn.addEventListener('click', (event) => {
-    //     popupModel.style.display = 'flex'
-    //     console.log("clicked reciepe btn")
-    // })
+    const getReciepebtn = document.querySelectorAll('.get-reciepe-btn')
+    getReciepebtn.forEach((item, index) => {
+        item.addEventListener('click', (event) => {
+            popupModel.style.display = 'flex'
+            console.log("clicked reciepe btn")
+            const popupContent = document.querySelector('.popup-content')
+            let popuHTML = `<h1 id="meal-name">${mealsData[0].strMeal}</h1>
+            <div class="category-name">
+                <h2 id="category-name">${input.value}</h2>
+            </div>
+            <h2 id="instruction">Instructions</h2>
+            <p id="ins-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem sunt itaque corporis quasi molestias
+                eveniet quisquam beatae, non ut et ex accusantium eaque iure facere rem mollitia assumenda natus.
+                Voluptatem iusto consequuntur similique? Eum rerum aliquam facilis adipisci doloremque architecto
+                ducimus similique, at beatae atque possimus quaerat fugit amet minus?</p>
+            <img src="./assets/food.jpg" alt="" class="circle-img">
+            <br>
+            <a href="#" id="watch-video">Watch Video</a>`
+            popupContent.innerHTML = popuHTML
+        })
+    })
 }
 
 const noResultsFoundScreen = () => {
